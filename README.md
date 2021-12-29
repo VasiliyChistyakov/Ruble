@@ -1,4 +1,4 @@
-# CurrencyAPI
+# Ruble
 
 Приложение использует API [ЦБ РФ](https://www.cbr-xml-daily.ru), для перевода в Рубли.
 
