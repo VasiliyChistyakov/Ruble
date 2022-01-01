@@ -73,7 +73,6 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }
