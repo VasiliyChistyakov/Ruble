@@ -15,6 +15,8 @@
 		335C981726C939140083F1B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 335C981526C939140083F1B3 /* LaunchScreen.storyboard */; };
 		335C983B26C93D0D0083F1B3 /* RatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335C983A26C93D0D0083F1B3 /* RatesModel.swift */; };
 		33A7AADF26F66C93007CB2E4 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A7AADE26F66C93007CB2E4 /* NetworkingManager.swift */; };
+		FD1F23702780E65700B76D05 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F236F2780E65700B76D05 /* ViewModel.swift */; };
+		FD1F23722780E66700B76D05 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F23712780E66700B76D05 /* ViewModelProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		335C982826C939140083F1B3 /* ValutaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValutaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		335C983A26C93D0D0083F1B3 /* RatesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesModel.swift; sourceTree = "<group>"; };
 		33A7AADE26F66C93007CB2E4 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		FD1F236F2780E65700B76D05 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		FD1F23712780E66700B76D05 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				335C980E26C939100083F1B3 /* ViewController.swift */,
+				FD1F23712780E66700B76D05 /* ViewModelProtocol.swift */,
+				FD1F236F2780E65700B76D05 /* ViewModel.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -258,6 +264,8 @@
 				335C980B26C939100083F1B3 /* AppDelegate.swift in Sources */,
 				335C980D26C939100083F1B3 /* SceneDelegate.swift in Sources */,
 				33A7AADF26F66C93007CB2E4 /* NetworkingManager.swift in Sources */,
+				FD1F23722780E66700B76D05 /* ViewModelProtocol.swift in Sources */,
+				FD1F23702780E65700B76D05 /* ViewModel.swift in Sources */,
 				335C983B26C93D0D0083F1B3 /* RatesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,11 +10,14 @@ import Combine
 
 class ViewController: UIViewController {
     
-    var listsOfcurrencies: [String] = [ ]
     var pickedValute: String!
-    var ratesModel: RatesModel?
-    private var valuteAction: AnyCancellable?
+    var valuteAction: AnyCancellable?
     
+    private var viewModel: ViewModelProtocol! {
+        didSet {
+            viewModel.appendData()
+        }
+    }
     
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var inputTextField: UITextField!
@@ -23,15 +26,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         pickerView.dataSource = self
         pickerView.delegate = self
-        
-        appendData()
-        
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap(_:)))
-//        tapGesture.numberOfTapsRequired = 2
-//        view.addGestureRecognizer(tapGesture)
         
         valuteAction = NotificationCenter.default
             .publisher(for: UITextField.textDidChangeNotification, object: inputTextField)
@@ -49,19 +45,11 @@ class ViewController: UIViewController {
             })
     }
     
-    func appendData() {
-        NetworkingManager.shared.fetchRates { models in
-            self.ratesModel = models
-            self.listsOfcurrencies = models.Valute.keys.sorted()
-        }
-        //        print(listsOfcurrencies)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel = ViewModel()
     }
     
-    
-//    @objc private func didDoubleTap(_ gesture: UITapGestureRecognizer) {
-//        сalculatingСurrency(inputTextField: inputTextField, outputTextField: outputTextField, pickedValute: pickedValute)
-//        //        print("DoubleTap")
-//    }
     
     @IBAction func tapAction(_ sender: Any) {
         inputTextField.resignFirstResponder()
@@ -74,11 +62,10 @@ class ViewController: UIViewController {
     }
     
     func сalculatingСurrency(inputTextField: UITextField!, outputTextField: UITextField, pickedValute: String!) {
-        
         guard let inputValute: Int = (Int(inputTextField.text!)), let pickedValute = pickedValute else { return }
-        let valueRates: Double = (Double(inputValute) * Double((ratesModel?.Valute[pickedValute]!.Value ?? 0)))
+        let valueRates: Double = (Double(inputValute) * Double((viewModel.ratesModel?.Valute[pickedValute]!.Value ?? 0)))
         
-        guard let valuteNominal =  ratesModel?.Valute[pickedValute]?.Nominal! else { return }
+        guard let valuteNominal =  viewModel.ratesModel?.Valute[pickedValute]?.Nominal! else { return }
         let сalculatingNominal = valueRates / Double(valuteNominal)
         
         outputTextField.text = "\(String(format:"%.2f",сalculatingNominal))"
@@ -92,17 +79,17 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        listsOfcurrencies.count
+        viewModel.pickerView()
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return listsOfcurrencies[row]
+        return viewModel.listsOfcurrencies[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        pickedValute = listsOfcurrencies[row]
-        topTextLabel.text = ratesModel?.Valute[pickedValute]?.Name
-        inputTextField.placeholder = listsOfcurrencies[row]
+        pickedValute = viewModel.listsOfcurrencies[row]
+        topTextLabel.text = viewModel.ratesModel?.Valute[pickedValute]?.Name
+        inputTextField.placeholder = viewModel.listsOfcurrencies[row]
         
         сalculatingСurrency(inputTextField: inputTextField, outputTextField: outputTextField, pickedValute: pickedValute)
     }
