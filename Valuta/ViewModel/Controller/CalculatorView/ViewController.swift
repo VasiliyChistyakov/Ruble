@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     private var viewModel: ViewModelProtocol! {
         didSet {
             viewModel.appendData()
+            DispatchQueue.main.async {
+                self.pickerView.reloadAllComponents()
+            }
         }
     }
     
@@ -26,6 +29,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         pickerView.dataSource = self
         pickerView.delegate = self
         
@@ -47,9 +51,9 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel = ViewModel()
+         viewModel = ViewModel()
+        
     }
-    
     
     @IBAction func tapAction(_ sender: Any) {
         inputTextField.resignFirstResponder()

@@ -14,9 +14,9 @@ class ViewModel: ViewModelProtocol {
     
     func appendData() {
         NetworkingManager.shared.fetchRates { models in
-            self.ratesModel = models
-            let keys = models.Valute.keys.sorted()
-            self.listsOfcurrencies = keys
+                self.ratesModel = models
+                let keys = models.Valute.keys.sorted()
+                self.listsOfcurrencies = keys
         }
     }
     
