@@ -31,7 +31,7 @@ class CurrentSecondViewController: UIViewController, ChartViewDelegate {
         self.upLabel.isHidden = false
         self.downLabel.isHidden = false
         
-        guard let nominal = valuta?.Nominal else { return  }
+        guard let nominal = valuta?.Nominal else { return }
         guard let value = valuta?.Value else { return }
         guard let previous = valuta?.Previous else { return }
         
@@ -61,9 +61,10 @@ class CurrentSecondViewController: UIViewController, ChartViewDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        lineChart.frame = CGRect(x: 0, y: 0, width: self.view.frame.width,
-                                 height: self.view.frame.height)
+//        lineChart.frame = CGRect(x: 0, y: 0, width: self.view.frame.width,
+//                                 height: self.view.frame.height)
+        lineChart.frame = CGRect(x: 0, y: 0, width: 350,
+                                 height: 200)
         lineChart.center = view.center
         view.addSubview(lineChart)
         
@@ -76,9 +77,7 @@ class CurrentSecondViewController: UIViewController, ChartViewDelegate {
                                                              y: valueResult)
                                             ])
         set.colors = ChartColorTemplates.joyful()
-        
         let date = LineChartData(dataSet: set)
-        
         lineChart.data = date
     }
 }

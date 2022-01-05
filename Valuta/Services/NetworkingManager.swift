@@ -17,8 +17,7 @@ class NetworkingManager {
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else { return }
-            print(data)
-            
+        
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase

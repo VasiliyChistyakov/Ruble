@@ -45,7 +45,9 @@ class ViewController: UIViewController {
                 }
             }
             .sink(receiveValue: { value in
-                self.сalculatingСurrency(inputTextField: self.inputTextField, outputTextField: self.outputTextField, pickedValute: self.pickedValute)
+                self.сalculatingСurrency(inputTextField: self.inputTextField,
+                                         outputTextField: self.outputTextField,
+                                         pickedValute: self.pickedValute)
             })
     }
     

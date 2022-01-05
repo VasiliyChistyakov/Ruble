@@ -41,10 +41,7 @@ extension CurrentCourseViewController: UICollectionViewDelegate, UICollectionVie
         cell.downImage.isHidden = false
         
         let keys = viewModel.listsOfcurrencies[indexPath.row]
-        
         cell.nameValutaLabel.text = viewModel.ratesModel?.Valute[keys]?.Name
-//        cell.charCodeLabel.text = viewModel.ratesModel?.Valute[keys]?.CharCode
-        
         
         let nominal = Double(viewModel.ratesModel?.Valute[keys]!.Nominal ?? 1)
         
@@ -53,7 +50,6 @@ extension CurrentCourseViewController: UICollectionViewDelegate, UICollectionVie
         
         let nominalValue = value / nominal
         let nominalPrevious = previous / nominal
-        
         
         if previous < value {
             cell.valueLabel.textColor = .red
