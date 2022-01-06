@@ -21,6 +21,7 @@
 		FD1F23782780F61F00B76D05 /* CurrentCourseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F23772780F61F00B76D05 /* CurrentCourseCollectionViewCell.swift */; };
 		FD1F237C278125D300B76D05 /* CurrentCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F237B278125D300B76D05 /* CurrentCourseViewController.swift */; };
 		FD6565A727828B70000C1346 /* CurrentSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6565A627828B70000C1346 /* CurrentSecondViewController.swift */; };
+		FDD4611527865D2600A8760B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD4611427865D2500A8760B /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		FD1F23772780F61F00B76D05 /* CurrentCourseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCourseCollectionViewCell.swift; sourceTree = "<group>"; };
 		FD1F237B278125D300B76D05 /* CurrentCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCourseViewController.swift; sourceTree = "<group>"; };
 		FD6565A627828B70000C1346 /* CurrentSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSecondViewController.swift; sourceTree = "<group>"; };
+		FDD4611427865D2500A8760B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,14 +126,14 @@
 			path = Valuta;
 			sourceTree = "<group>";
 		};
-		33766DD7273AEE5500A03FBF /* Controller */ = {
+		33766DD7273AEE5500A03FBF /* View */ = {
 			isa = PBXGroup;
 			children = (
 				FD6565A527828B49000C1346 /* CurrentSecondView */,
 				FD1F23742780F59700B76D05 /* CurrentCourseView */,
 				FD1F23732780F33A00B76D05 /* CalculatorView */,
 			);
-			path = Controller;
+			path = View;
 			sourceTree = "<group>";
 		};
 		33766DD8273AEE7400A03FBF /* Model */ = {
@@ -187,7 +189,7 @@
 		FDAB9FF82783DB6300597887 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				33766DD7273AEE5500A03FBF /* Controller */,
+				33766DD7273AEE5500A03FBF /* View */,
 				33766DD8273AEE7400A03FBF /* Model */,
 				FD1F23712780E66700B76D05 /* ViewModelProtocol.swift */,
 				FD1F236F2780E65700B76D05 /* ViewModel.swift */,
@@ -199,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				33A7AADE26F66C93007CB2E4 /* NetworkingManager.swift */,
+				FDD4611427865D2500A8760B /* Constants.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				335C980F26C939100083F1B3 /* ViewController.swift in Sources */,
+				FDD4611527865D2600A8760B /* Constants.swift in Sources */,
 				335C980B26C939100083F1B3 /* AppDelegate.swift in Sources */,
 				335C980D26C939100083F1B3 /* SceneDelegate.swift in Sources */,
 				33A7AADF26F66C93007CB2E4 /* NetworkingManager.swift in Sources */,

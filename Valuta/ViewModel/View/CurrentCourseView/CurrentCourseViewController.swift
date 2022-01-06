@@ -9,6 +9,7 @@ import UIKit
 
 class CurrentCourseViewController: UIViewController {
     
+    
     private var viewModel: ViewModelProtocol! {
         didSet {
             viewModel.appendData()
@@ -31,7 +32,7 @@ class CurrentCourseViewController: UIViewController {
 
 extension CurrentCourseViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.pickerView()
+        arrayPicked.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -42,6 +43,8 @@ extension CurrentCourseViewController: UICollectionViewDelegate, UICollectionVie
         
         let keys = viewModel.listsOfcurrencies[indexPath.row]
         cell.nameValutaLabel.text = viewModel.ratesModel?.Valute[keys]?.Name
+        
+        cell.charCodeLabel.text = viewModel.ratesModel?.Valute[keys]?.CharCode
         
         let nominal = Double(viewModel.ratesModel?.Valute[keys]!.Nominal ?? 1)
         

@@ -33,6 +33,8 @@ class ViewController: UIViewController {
         pickerView.dataSource = self
         pickerView.delegate = self
         
+        viewModel = ViewModel()
+        
         valuteAction = NotificationCenter.default
             .publisher(for: UITextField.textDidChangeNotification, object: inputTextField)
             .map {$0.object as? UITextField}
@@ -51,11 +53,6 @@ class ViewController: UIViewController {
             })
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-         viewModel = ViewModel()
-        
-    }
     
     @IBAction func tapAction(_ sender: Any) {
         inputTextField.resignFirstResponder()
@@ -92,11 +89,15 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        pickedValute = viewModel.listsOfcurrencies[row]
-        topTextLabel.text = viewModel.ratesModel?.Valute[pickedValute]?.Name
-        inputTextField.placeholder = viewModel.listsOfcurrencies[row]
+        DispatchQueue.main.async {
+            self.pickedValute = self.viewModel.listsOfcurrencies[row]
+            self.topTextLabel.text = self.viewModel.ratesModel?.Valute[self.pickedValute]?.Name
+            self.inputTextField.placeholder = self.viewModel.listsOfcurrencies[row]
         
-        сalculatingСurrency(inputTextField: inputTextField, outputTextField: outputTextField, pickedValute: pickedValute)
+            self.сalculatingСurrency(inputTextField: self.inputTextField,
+                                     outputTextField: self.outputTextField,
+                                     pickedValute: self.pickedValute)
+        }
     }
 }
 

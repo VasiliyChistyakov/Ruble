@@ -24,7 +24,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Ca6-CC-QzN">
                                         <rect key="frame" x="22" y="0.0" width="320" height="251.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите валюту 🤑" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBn-Ep-AT9">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите валюту 🤑" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBn-Ep-AT9">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -119,21 +119,36 @@
                                             <rect key="frame" x="0.0" y="0.0" width="397" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="VRt-OL-fwt">
-                                                    <rect key="frame" x="15" y="21" width="368.5" height="44"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="VRk-bl-kaL">
+                                                    <rect key="frame" x="8" y="21" width="374.5" height="44"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Фунт стерлингов Соединенного королевства" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZ9-N0-h6W">
-                                                            <rect key="frame" x="0.0" y="0.0" width="229" height="44"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="229" id="I7E-I8-3vQ"/>
-                                                                <constraint firstAttribute="height" constant="44" id="zpU-WD-L2V"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SzN-Fa-2Ub">
+                                                            <rect key="frame" x="0.0" y="0.0" width="229" height="43.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GBD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkV-To-fH8">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="45" id="SsL-2b-IA8"/>
+                                                                        <constraint firstAttribute="height" constant="20.5" id="iZV-08-9Zr"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Фунт стерлингов Соединенного королевства" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZ9-N0-h6W">
+                                                                    <rect key="frame" x="0.0" y="25.5" width="229" height="18"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="18" id="LLm-Uf-3sP"/>
+                                                                        <constraint firstAttribute="width" constant="229" id="fbm-mR-j4H"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.down.to.line.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="C5W-H1-ISu">
-                                                            <rect key="frame" x="240" y="0.5" width="20" height="19"/>
+                                                            <rect key="frame" x="242" y="0.5" width="20" height="19"/>
                                                             <color key="tintColor" systemColor="systemGreenColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="170-XJ-UVP"/>
@@ -141,7 +156,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.to.line.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ws1-Gs-mF4">
-                                                            <rect key="frame" x="271" y="0.5" width="20" height="19"/>
+                                                            <rect key="frame" x="275" y="0.5" width="20" height="19"/>
                                                             <color key="tintColor" systemColor="systemRedColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="qih-IT-0Un"/>
@@ -149,7 +164,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZXr-mW-hyT">
-                                                            <rect key="frame" x="302" y="0.0" width="66.5" height="44"/>
+                                                            <rect key="frame" x="308" y="0.0" width="66.5" height="44"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100.00 ₽" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nl4-jk-1wa">
                                                                     <rect key="frame" x="0.0" y="0.0" width="66.5" height="20.5"/>
@@ -177,14 +192,15 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="VRt-OL-fwt" secondAttribute="trailing" constant="13.5" id="UMt-re-eyU"/>
-                                                <constraint firstAttribute="bottom" secondItem="VRt-OL-fwt" secondAttribute="bottom" constant="21" id="ita-Qf-MNi"/>
-                                                <constraint firstItem="VRt-OL-fwt" firstAttribute="top" secondItem="e0T-yp-XlT" secondAttribute="top" constant="21" id="tDn-vm-tQA"/>
-                                                <constraint firstItem="VRt-OL-fwt" firstAttribute="leading" secondItem="e0T-yp-XlT" secondAttribute="leading" constant="15" id="yCk-g1-EVs"/>
+                                                <constraint firstAttribute="trailing" secondItem="VRk-bl-kaL" secondAttribute="trailing" constant="14.5" id="XjR-h3-68O"/>
+                                                <constraint firstAttribute="bottom" secondItem="VRk-bl-kaL" secondAttribute="bottom" constant="21" id="nb8-T2-EDg"/>
+                                                <constraint firstItem="VRk-bl-kaL" firstAttribute="leading" secondItem="e0T-yp-XlT" secondAttribute="leading" constant="8" id="phs-4j-gTd"/>
+                                                <constraint firstItem="VRk-bl-kaL" firstAttribute="top" secondItem="e0T-yp-XlT" secondAttribute="top" constant="21" id="val-dN-vz8"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="397" height="86"/>
                                         <connections>
+                                            <outlet property="charCodeLabel" destination="qkV-To-fH8" id="HSL-ZM-Ifj"/>
                                             <outlet property="downImage" destination="C5W-H1-ISu" id="Rbq-t7-yyM"/>
                                             <outlet property="nameValutaLabel" destination="BZ9-N0-h6W" id="N3o-Ln-r1f"/>
                                             <outlet property="previousLabel" destination="vaF-dv-2sZ" id="XCp-2h-gEZ"/>
@@ -212,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zoA-iy-3W3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3775" y="640"/>
+            <point key="canvasLocation" x="3773.913043478261" y="639.50892857142856"/>
         </scene>
         <!--Current Second View Controller-->
         <scene sceneID="z7H-E7-OOv">

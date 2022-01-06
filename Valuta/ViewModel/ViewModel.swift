@@ -13,10 +13,11 @@ class ViewModel: ViewModelProtocol {
     var ratesModel: RatesModel?
     
     func appendData() {
-        NetworkingManager.shared.fetchRates { models in
-                self.ratesModel = models
-                let keys = models.Valute.keys.sorted()
-                self.listsOfcurrencies = keys
+        NetworkingManager.shared.fetchRates(urlJson: urlJson) { models in
+            self.ratesModel = models
+            
+            let keys = models.Valute.keys.sorted()
+            self.listsOfcurrencies = keys
         }
     }
     

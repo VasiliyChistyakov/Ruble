@@ -10,6 +10,7 @@ import UIKit
 class CurrentCourseCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var nameValutaLabel: UILabel!
+    @IBOutlet weak var charCodeLabel: UILabel!
     
     @IBOutlet weak var previousLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!

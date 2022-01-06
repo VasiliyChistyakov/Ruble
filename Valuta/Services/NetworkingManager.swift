@@ -12,8 +12,8 @@ class NetworkingManager {
     static var shared = NetworkingManager()
     private init() { }
     
-    func fetchRates(complitionHandler: @escaping (RatesModel) -> Void ){
-        guard let url = URL(string: "https://www.cbr-xml-daily.ru/daily_json.js") else { return }
+    func fetchRates(urlJson: String, complitionHandler: @escaping (RatesModel) -> Void ){
+        guard let url = URL(string: urlJson) else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else { return }

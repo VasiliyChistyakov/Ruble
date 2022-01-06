@@ -31,18 +31,42 @@ class CurrentSecondViewController: UIViewController, ChartViewDelegate {
         self.upLabel.isHidden = false
         self.downLabel.isHidden = false
         
+        fetchSeсondCurrency()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    
+        lineChart.frame = CGRect(x: 0, y: 0, width: 350, height: 200)
+        lineChart.center = view.center
+        view.addSubview(lineChart)
+        
+        guard let previousResult = previousResult else { return }
+        guard let valueResult = valueResult else { return }
+        
+        let set = LineChartDataSet(entries: [ ChartDataEntry(x: previousResult,
+                                                             y: previousResult),
+                                              ChartDataEntry(x: valueResult,
+                                                             y: valueResult)
+                                            ])
+        
+        set.colors = ChartColorTemplates.joyful()
+        let date = LineChartData(dataSet: set)
+        lineChart.data = date
+    }
+    
+    func fetchSeсondCurrency() {
         guard let nominal = valuta?.Nominal else { return }
         guard let value = valuta?.Value else { return }
         guard let previous = valuta?.Previous else { return }
-        
+      
         let resultValue = value / Double(nominal)
         self.valueResult = resultValue
+        
         let resultPrevious = previous / Double(nominal)
         self.previousResult = resultPrevious
         
-        
         let difference = resultValue - resultPrevious
-        
         self.valueLabel.text = "\(String(format: "%.2f",resultValue)) ₽"
         
         if value > previous {
@@ -56,29 +80,6 @@ class CurrentSecondViewController: UIViewController, ChartViewDelegate {
         self.differenceLabel.text = "\(String(format: "%.2f" ,difference)) ₽"
         self.charCodeLabel.text = valuta?.CharCode
         self.nameLabel.text = valuta?.Name
-        
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-//        lineChart.frame = CGRect(x: 0, y: 0, width: self.view.frame.width,
-//                                 height: self.view.frame.height)
-        lineChart.frame = CGRect(x: 0, y: 0, width: 350,
-                                 height: 200)
-        lineChart.center = view.center
-        view.addSubview(lineChart)
-        
-        guard let previousResult = previousResult else { return }
-        guard let valueResult = valueResult else { return }
-        
-        let set = LineChartDataSet(entries: [ ChartDataEntry(x: previousResult,
-                                                             y: previousResult),
-                                              ChartDataEntry(x: valueResult,
-                                                             y: valueResult)
-                                            ])
-        set.colors = ChartColorTemplates.joyful()
-        let date = LineChartData(dataSet: set)
-        lineChart.data = date
     }
 }
 
