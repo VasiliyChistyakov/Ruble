@@ -9,6 +9,7 @@ import UIKit
 
 class CurrentCourseViewController: UIViewController {
     
+    var defaults: UserDefaults!
     
     private var viewModel: ViewModelProtocol! {
         didSet {
@@ -26,13 +27,23 @@ class CurrentCourseViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
+        defaults = UserDefaults.standard
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel = ViewModel()
+    }
+    
+    @IBAction func tapSettings(_ sender: Any) {
+        print("Tap")
     }
 }
 
 extension CurrentCourseViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        arrayPicked.count
+        viewModel.pickerView()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -41,7 +52,12 @@ extension CurrentCourseViewController: UICollectionViewDelegate, UICollectionVie
         cell.upImage.isHidden = false
         cell.downImage.isHidden = false
         
+        let differenceIndecator = defaults.bool(forKey: "indecator")
+        let nameIndecator = defaults.bool(forKey: "nameValute")
+        
         let keys = viewModel.listsOfcurrencies[indexPath.row]
+        
+        cell.nameValutaLabel.isHidden = nameIndecator
         cell.nameValutaLabel.text = viewModel.ratesModel?.Valute[keys]?.Name
         
         cell.charCodeLabel.text = viewModel.ratesModel?.Valute[keys]?.CharCode
@@ -54,6 +70,8 @@ extension CurrentCourseViewController: UICollectionViewDelegate, UICollectionVie
         let nominalValue = value / nominal
         let nominalPrevious = previous / nominal
         
+        let difference = nominalValue - nominalPrevious
+        
         if previous < value {
             cell.valueLabel.textColor = .red
             cell.previousLabel.textColor = .green
@@ -65,7 +83,12 @@ extension CurrentCourseViewController: UICollectionViewDelegate, UICollectionVie
         }
         
         cell.valueLabel.text = "\(String(format: "%.1f" ,nominalValue)) ₽"
-        cell.previousLabel.text = "\(String(format: "%.1f" ,nominalPrevious)) ₽"
+        
+        if differenceIndecator == false {
+            cell.previousLabel.text = "\(String(format: "%.1f" ,nominalPrevious)) ₽"
+        } else {
+            cell.previousLabel.text = "\(String(format: "%.2f" ,difference)) ₽"
+        }
         
         return cell
     }

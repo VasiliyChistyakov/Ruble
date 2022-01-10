@@ -18,6 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="4YU-Ak-DcO">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="EVu-X1-tkq">
                                 <rect key="frame" x="25" y="202" width="364" height="301.5"/>
                                 <subviews>
@@ -71,6 +74,8 @@
                             <constraint firstItem="EVu-X1-tkq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="158" id="Ltw-51-Khf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EVu-X1-tkq" secondAttribute="trailing" constant="25" id="Osh-yi-PbK"/>
                             <constraint firstItem="EVu-X1-tkq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="dYH-uj-xQH"/>
+                            <constraint firstItem="4YU-Ak-DcO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xrI-BM-vn8"/>
+                            <constraint firstItem="4YU-Ak-DcO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xuZ-ld-fN8"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="gDl-3g-lI1" appends="YES" id="ALX-Fh-Gde"/>
@@ -79,6 +84,7 @@
                     <tabBarItem key="tabBarItem" title="Calculator" image="dice" catalog="system" landscapeImage="dice" selectedImage="dice" id="8Qa-YQ-QEX"/>
                     <navigationItem key="navigationItem" id="8wj-dv-lrY"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="4YU-Ak-DcO" id="8ib-j1-gIe"/>
                         <outlet property="inputTextField" destination="15v-k2-foA" id="vJy-hi-2Ep"/>
                         <outlet property="outputTextField" destination="S6c-F2-KTz" id="N58-0k-rzj"/>
                         <outlet property="pickerView" destination="WoJ-ZN-B58" id="8Dk-hL-3Rt"/>
@@ -94,7 +100,7 @@
             </objects>
             <point key="canvasLocation" x="2634.7826086956525" y="-135.26785714285714"/>
         </scene>
-        <!--Current Course View Controller-->
+        <!--Список валют-->
         <scene sceneID="c0y-19-OEd">
             <objects>
                 <viewController id="auH-m0-7fr" customClass="CurrentCourseViewController" customModule="Valuta" customModuleProvider="target" sceneMemberID="viewController">
@@ -123,25 +129,25 @@
                                                     <rect key="frame" x="8" y="21" width="374.5" height="44"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SzN-Fa-2Ub">
-                                                            <rect key="frame" x="0.0" y="0.0" width="229" height="43.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="229" height="44"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GBD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkV-To-fH8">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="229" height="21"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="45" id="SsL-2b-IA8"/>
-                                                                        <constraint firstAttribute="height" constant="20.5" id="iZV-08-9Zr"/>
+                                                                        <constraint firstAttribute="width" constant="229" id="MKG-Ta-aeu"/>
+                                                                        <constraint firstAttribute="height" constant="21" id="Xkf-hP-Ei5"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Фунт стерлингов Соединенного королевства" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZ9-N0-h6W">
-                                                                    <rect key="frame" x="0.0" y="25.5" width="229" height="18"/>
+                                                                    <rect key="frame" x="0.0" y="26" width="229" height="18"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="18" id="LLm-Uf-3sP"/>
                                                                         <constraint firstAttribute="width" constant="229" id="fbm-mR-j4H"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -172,7 +178,7 @@
                                                                         <constraint firstAttribute="height" constant="20.5" id="1kh-WP-qjA"/>
                                                                         <constraint firstAttribute="width" constant="66.5" id="UsK-3f-Kxh"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -220,7 +226,14 @@
                             <constraint firstItem="dJT-NI-TfK" firstAttribute="leading" secondItem="gFB-3R-qT5" secondAttribute="leading" id="lJu-rF-Aps"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="wfK-WD-652"/>
+                    <navigationItem key="navigationItem" title="Список валют" id="wfK-WD-652">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="737-PO-sb1">
+                            <connections>
+                                <action selector="tapSettings:" destination="auH-m0-7fr" id="Wpq-1c-I6w"/>
+                                <segue destination="euc-ac-8S3" kind="show" identifier="SettingsVC" id="C0f-9Y-SUM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="dJT-NI-TfK" id="BLw-QK-vrd"/>
                         <segue destination="qHO-hO-x09" kind="show" identifier="CurrentVC" id="RFY-Sm-EIs"/>
@@ -229,6 +242,72 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zoA-iy-3W3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3773.913043478261" y="639.50892857142856"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="5Rz-P1-S6o">
+            <objects>
+                <viewController id="euc-ac-8S3" customClass="SettingsViewController" customModule="Valuta" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P1q-zb-cxS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0uT-5b-ew2">
+                                <rect key="frame" x="42" y="134" width="330" height="77"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="102" translatesAutoresizingMaskIntoConstraints="NO" id="zp4-L0-tw4">
+                                        <rect key="frame" x="0.0" y="0.0" width="330" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Показать разницу " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMY-k1-X1O">
+                                                <rect key="frame" x="0.0" y="0.0" width="179" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YD7-F9-hg7">
+                                                <rect key="frame" x="281" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="previosSwitchAction:" destination="euc-ac-8S3" eventType="valueChanged" id="GNA-WX-lyc"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="79" translatesAutoresizingMaskIntoConstraints="NO" id="LY5-M7-9d8">
+                                        <rect key="frame" x="0.0" y="46" width="330" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наименование валют" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1L-mq-OCM">
+                                                <rect key="frame" x="0.0" y="0.0" width="202" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rtM-Su-CH7">
+                                                <rect key="frame" x="281" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="nameSwitchAction:" destination="euc-ac-8S3" eventType="valueChanged" id="yIV-yN-FP3"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9aa-cr-ZH4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0uT-5b-ew2" firstAttribute="top" secondItem="9aa-cr-ZH4" secondAttribute="top" constant="46" id="kEC-oy-mSk"/>
+                            <constraint firstItem="9aa-cr-ZH4" firstAttribute="trailing" secondItem="0uT-5b-ew2" secondAttribute="trailing" constant="42" id="qCb-TR-Tci"/>
+                            <constraint firstItem="0uT-5b-ew2" firstAttribute="leading" secondItem="9aa-cr-ZH4" secondAttribute="leading" constant="42" id="t2S-yb-tsc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ecS-z4-IjB"/>
+                    <connections>
+                        <outlet property="differenceLabelSwitch" destination="YD7-F9-hg7" id="7WW-mn-X1N"/>
+                        <outlet property="nameLabelSwitch" destination="rtM-Su-CH7" id="cHM-6r-408"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KYE-XL-Z1p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5014.4927536231889" y="489.50892857142856"/>
         </scene>
         <!--Current Second View Controller-->
         <scene sceneID="z7H-E7-OOv">
@@ -326,7 +405,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S4m-9P-4f2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4673.913043478261" y="639.50892857142856"/>
+            <point key="canvasLocation" x="4699" y="1269"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="PO9-J8-k4V">
@@ -372,6 +451,7 @@
         <image name="arrow.down.to.line.circle" catalog="system" width="128" height="121"/>
         <image name="arrow.up.to.line.circle" catalog="system" width="128" height="121"/>
         <image name="dice" catalog="system" width="128" height="113"/>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -11,17 +11,23 @@ import Combine
 class ViewController: UIViewController {
     
     var pickedValute: String!
-    var valuteAction: AnyCancellable?
+    
+    var inputObserver: AnyCancellable?
+    var outputObserver: AnyCancellable?
     
     private var viewModel: ViewModelProtocol! {
         didSet {
             viewModel.appendData()
             DispatchQueue.main.async {
                 self.pickerView.reloadAllComponents()
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
+                self.pickerView.isHidden = false
             }
         }
     }
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var outputTextField: UITextField!
@@ -30,12 +36,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        pickerView.isHidden = true
+        activityIndicator.startAnimating()
+        
+        activityIndicator.isHidden = false
         pickerView.dataSource = self
         pickerView.delegate = self
         
         viewModel = ViewModel()
         
-        valuteAction = NotificationCenter.default
+        inputObserver = NotificationCenter.default
             .publisher(for: UITextField.textDidChangeNotification, object: inputTextField)
             .map {$0.object as? UITextField}
             .compactMap { $0?.text }
@@ -47,24 +57,36 @@ class ViewController: UIViewController {
                 }
             }
             .sink(receiveValue: { value in
-                self.сalculatingСurrency(inputTextField: self.inputTextField,
-                                         outputTextField: self.outputTextField,
-                                         pickedValute: self.pickedValute)
+                self.inputCalculatingСurrency(inputTextField: self.inputTextField,
+                                              outputTextField: self.outputTextField,
+                                              pickedValute: self.pickedValute)
+            })
+        
+        outputObserver = NotificationCenter.default
+            .publisher(for: UITextField.textDidChangeNotification, object: outputTextField)
+            .map {$0.object as? UITextField}
+            .compactMap { $0?.text }
+            .map { str -> Bool in
+                if let number = Double(str) {
+                    return number > 0
+                } else {
+                    return false
+                }
+            }
+            .sink(receiveValue: { value in
+                self.outputCalculatingСurrency(inputTextField: self.inputTextField,
+                                               outputTextField: self.outputTextField,
+                                               pickedValute: self.pickedValute)
             })
     }
-    
     
     @IBAction func tapAction(_ sender: Any) {
         inputTextField.resignFirstResponder()
         outputTextField.resignFirstResponder()
-        
-        if let rubels = inputTextField.text, rubels.isEmpty {
-            outputTextField.text?.removeAll()
-            //            print("OneTap")
-        }
+        print(viewModel.listsOfcurrencies)
     }
     
-    func сalculatingСurrency(inputTextField: UITextField!, outputTextField: UITextField, pickedValute: String!) {
+    func inputCalculatingСurrency(inputTextField: UITextField!, outputTextField: UITextField, pickedValute: String!) {
         guard let inputValute: Int = (Int(inputTextField.text!)), let pickedValute = pickedValute else { return }
         let valueRates: Double = (Double(inputValute) * Double((viewModel.ratesModel?.Valute[pickedValute]!.Value ?? 0)))
         
@@ -72,6 +94,16 @@ class ViewController: UIViewController {
         let сalculatingNominal = valueRates / Double(valuteNominal)
         
         outputTextField.text = "\(String(format:"%.2f",сalculatingNominal))"
+    }
+    
+    func outputCalculatingСurrency(inputTextField: UITextField!, outputTextField: UITextField, pickedValute: String!) {
+        guard let outputValute: Int = (Int(outputTextField.text!)), let pickedValute = pickedValute else { return }
+        let valueRates: Double = (Double(outputValute)) / (Double((viewModel.ratesModel?.Valute[pickedValute]!.Value ?? 0)))
+        
+        guard let valuteNominal =  viewModel.ratesModel?.Valute[pickedValute]?.Nominal! else { return }
+        let сalculatingNominal = valueRates * Double(valuteNominal)
+        
+        inputTextField.text = "\(String(format:"%.2f",сalculatingNominal))"
     }
 }
 
@@ -81,7 +113,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        viewModel.pickerView()
+        return viewModel.pickerView()
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -89,15 +121,17 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        DispatchQueue.main.async {
-            self.pickedValute = self.viewModel.listsOfcurrencies[row]
-            self.topTextLabel.text = self.viewModel.ratesModel?.Valute[self.pickedValute]?.Name
-            self.inputTextField.placeholder = self.viewModel.listsOfcurrencies[row]
+        self.pickedValute = self.viewModel.listsOfcurrencies[row]
+        self.topTextLabel.text = self.viewModel.ratesModel?.Valute[self.pickedValute]?.Name
+        self.inputTextField.placeholder = self.viewModel.listsOfcurrencies[row]
         
-            self.сalculatingСurrency(inputTextField: self.inputTextField,
-                                     outputTextField: self.outputTextField,
-                                     pickedValute: self.pickedValute)
-        }
+        self.inputCalculatingСurrency(inputTextField: self.inputTextField,
+                                      outputTextField: self.outputTextField,
+                                      pickedValute: self.pickedValute)
+        
+        self.outputCalculatingСurrency(inputTextField: self.inputTextField,
+                                       outputTextField: self.outputTextField,
+                                       pickedValute: self.pickedValute)
     }
 }
 

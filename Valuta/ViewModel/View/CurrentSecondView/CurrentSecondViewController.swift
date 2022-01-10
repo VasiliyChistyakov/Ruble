@@ -31,6 +31,8 @@ class CurrentSecondViewController: UIViewController, ChartViewDelegate {
         self.upLabel.isHidden = false
         self.downLabel.isHidden = false
         
+        lineChart = LineChartView()
+        
         fetchSeсondCurrency()
     }
     

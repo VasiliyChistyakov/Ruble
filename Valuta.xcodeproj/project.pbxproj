@@ -21,6 +21,7 @@
 		FD1F23782780F61F00B76D05 /* CurrentCourseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F23772780F61F00B76D05 /* CurrentCourseCollectionViewCell.swift */; };
 		FD1F237C278125D300B76D05 /* CurrentCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F237B278125D300B76D05 /* CurrentCourseViewController.swift */; };
 		FD6565A727828B70000C1346 /* CurrentSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6565A627828B70000C1346 /* CurrentSecondViewController.swift */; };
+		FDB43B4B278A3F92004B5CD7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB43B4A278A3F92004B5CD7 /* SettingsViewController.swift */; };
 		FDD4611527865D2600A8760B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD4611427865D2500A8760B /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		FD1F23772780F61F00B76D05 /* CurrentCourseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCourseCollectionViewCell.swift; sourceTree = "<group>"; };
 		FD1F237B278125D300B76D05 /* CurrentCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCourseViewController.swift; sourceTree = "<group>"; };
 		FD6565A627828B70000C1346 /* CurrentSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSecondViewController.swift; sourceTree = "<group>"; };
+		FDB43B4A278A3F92004B5CD7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FDD4611427865D2500A8760B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +176,7 @@
 			children = (
 				FD1F237B278125D300B76D05 /* CurrentCourseViewController.swift */,
 				FD1F23772780F61F00B76D05 /* CurrentCourseCollectionViewCell.swift */,
+				FDB43B4A278A3F92004B5CD7 /* SettingsViewController.swift */,
 			);
 			path = CurrentCourseView;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				FD1F23702780E65700B76D05 /* ViewModel.swift in Sources */,
 				FD1F237C278125D300B76D05 /* CurrentCourseViewController.swift in Sources */,
 				335C983B26C93D0D0083F1B3 /* RatesModel.swift in Sources */,
+				FDB43B4B278A3F92004B5CD7 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
