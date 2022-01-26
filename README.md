@@ -26,13 +26,6 @@
 
 
 
-<img src="https://user-images.githubusercontent.com/81886542/148717369-88e4e9dc-975e-4ec8-862a-f6e6547c9b21.png" width="300" />
-
-
-
-<img src="https://user-images.githubusercontent.com/81886542/148717380-f12b0631-0867-46a8-9509-b335773a5be3.png" width="300" />
-
-
 <img src="https://user-images.githubusercontent.com/81886542/148717425-15b283d3-d423-4b56-bdd0-175c45917a5a.png" width="300" />
 
 
