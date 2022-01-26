@@ -22,7 +22,7 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.pickerView.reloadAllComponents()
             }
-            /// Придумать как это сдкелать из mvvm
+         
             NetworkingManager.shared.fetchRates(urlJson: urlJson) { data in
                 if data.Valute.isEmpty {
                     print("Нет значений")

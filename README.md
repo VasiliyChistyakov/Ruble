@@ -1,4 +1,4 @@
-# CurrencyAPI
+# Ruble
 
 Приложение использует API [ЦБ РФ](https://www.cbr-xml-daily.ru), для перевода в Рубли.
 
@@ -6,15 +6,32 @@
 - JSON
 - MVC
 - UIKit
+- Combine
+- Firebase
+
+<img src="https://user-images.githubusercontent.com/81886542/148717354-ec41fff8-7914-401c-90fe-6c18c79882c1.png" width="300" />
+
+<img src="https://user-images.githubusercontent.com/81886542/151224221-64873c74-f6b2-472f-8c89-a8f4f34986e1.png" width="300" />
+
+<img src="https://user-images.githubusercontent.com/81886542/151224201-3e4cb487-a140-4735-b105-aa9bfc8dedf8.png" width="300" />
+
+<img src="https://user-images.githubusercontent.com/81886542/151224186-aabc79cf-ba97-45ea-84cd-5b923ce36264.png" width="300" />
+
+<img src="https://user-images.githubusercontent.com/81886542/151225211-01b0a8d4-c68a-4574-9497-40d8914e68e5.png" width="300" />
+
+<img src="https://user-images.githubusercontent.com/81886542/151224050-39365ca5-30bb-4650-b2f7-db899f0338b6.png" width="300" />
+
+<img src="https://user-images.githubusercontent.com/81886542/151224055-8e09dbec-a761-48f0-aca8-1ee57c550122.png" width="300" />
 
 
-<img src="https://user-images.githubusercontent.com/81886542/137900928-3a5861a8-3356-477a-a52a-142c2b757dcf.png" width="300" />
-
-
-<img src="https://user-images.githubusercontent.com/81886542/137900996-7afdb018-3833-4bd3-bf47-2f96fe97cd3c.png" width="300" />
 
 
 
-<img src="https://user-images.githubusercontent.com/81886542/137900138-57d08c00-1824-461e-ad2e-f27907de7764.png" width="300" />
+<img src="https://user-images.githubusercontent.com/81886542/148717425-15b283d3-d423-4b56-bdd0-175c45917a5a.png" width="300" />
 
+
+<img src="https://user-images.githubusercontent.com/81886542/148726199-25e7e9e4-c4d0-45ea-92ee-b001935ff13e.png" width="300" />
+
+
+<img src="https://user-images.githubusercontent.com/81886542/148955546-17a92b47-1bcb-4050-82b2-595e301ff559.png" width="300" />
 
