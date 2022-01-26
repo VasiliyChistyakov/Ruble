@@ -13,10 +13,10 @@ class CurrentCourseViewController: UIViewController {
     
     private var viewModel: ViewModelProtocol! {
         didSet {
-            viewModel.appendData()
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
+                self.viewModel.appendData()
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
         }
     }
     
@@ -28,11 +28,7 @@ class CurrentCourseViewController: UIViewController {
         collectionView.delegate = self
         
         defaults = UserDefaults.standard
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         viewModel = ViewModel()
     }
     

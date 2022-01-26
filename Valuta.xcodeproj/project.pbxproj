@@ -16,6 +16,8 @@
 		335C981726C939140083F1B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 335C981526C939140083F1B3 /* LaunchScreen.storyboard */; };
 		335C983B26C93D0D0083F1B3 /* RatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335C983A26C93D0D0083F1B3 /* RatesModel.swift */; };
 		33A7AADF26F66C93007CB2E4 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A7AADE26F66C93007CB2E4 /* NetworkingManager.swift */; };
+		FD050F8427A14D94008EC877 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD050F8327A14D94008EC877 /* AuthViewController.swift */; };
+		FD050F8627A14F34008EC877 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD050F8527A14F34008EC877 /* GoogleService-Info.plist */; };
 		FD1F23702780E65700B76D05 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F236F2780E65700B76D05 /* ViewModel.swift */; };
 		FD1F23722780E66700B76D05 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F23712780E66700B76D05 /* ViewModelProtocol.swift */; };
 		FD1F23782780F61F00B76D05 /* CurrentCourseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1F23772780F61F00B76D05 /* CurrentCourseCollectionViewCell.swift */; };
@@ -58,6 +60,8 @@
 		33A7AADE26F66C93007CB2E4 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		8C9C7984487873E153E42D0B /* Pods-Valuta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Valuta.debug.xcconfig"; path = "Target Support Files/Pods-Valuta/Pods-Valuta.debug.xcconfig"; sourceTree = "<group>"; };
 		8EC161D4F0D500DAA7159725 /* Pods_Valuta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Valuta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD050F8327A14D94008EC877 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		FD050F8527A14F34008EC877 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD1F236F2780E65700B76D05 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		FD1F23712780E66700B76D05 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		FD1F23772780F61F00B76D05 /* CurrentCourseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentCourseCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 				335C981026C939100083F1B3 /* Main.storyboard */,
 				335C981526C939140083F1B3 /* LaunchScreen.storyboard */,
 				335C981326C939140083F1B3 /* Assets.xcassets */,
+				FD050F8527A14F34008EC877 /* GoogleService-Info.plist */,
 				335C981826C939140083F1B3 /* Info.plist */,
 			);
 			path = Valuta;
@@ -131,6 +136,7 @@
 		33766DD7273AEE5500A03FBF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FD050F8227A14D75008EC877 /* AuthView */,
 				FD6565A527828B49000C1346 /* CurrentSecondView */,
 				FD1F23742780F59700B76D05 /* CurrentCourseView */,
 				FD1F23732780F33A00B76D05 /* CalculatorView */,
@@ -161,6 +167,14 @@
 				025EECD3DD65C72339E14994 /* Pods-Valuta.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FD050F8227A14D75008EC877 /* AuthView */ = {
+			isa = PBXGroup;
+			children = (
+				FD050F8327A14D94008EC877 /* AuthViewController.swift */,
+			);
+			path = AuthView;
 			sourceTree = "<group>";
 		};
 		FD1F23732780F33A00B76D05 /* CalculatorView */ = {
@@ -315,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				335C981726C939140083F1B3 /* LaunchScreen.storyboard in Resources */,
+				FD050F8627A14F34008EC877 /* GoogleService-Info.plist in Resources */,
 				335C981426C939140083F1B3 /* Assets.xcassets in Resources */,
 				335C981226C939100083F1B3 /* Main.storyboard in Resources */,
 			);
@@ -391,6 +406,7 @@
 				FD1F23722780E66700B76D05 /* ViewModelProtocol.swift in Sources */,
 				FD1F23782780F61F00B76D05 /* CurrentCourseCollectionViewCell.swift in Sources */,
 				FD6565A727828B70000C1346 /* CurrentSecondViewController.swift in Sources */,
+				FD050F8427A14D94008EC877 /* AuthViewController.swift in Sources */,
 				FD1F23702780E65700B76D05 /* ViewModel.swift in Sources */,
 				FD1F237C278125D300B76D05 /* CurrentCourseViewController.swift in Sources */,
 				335C983B26C93D0D0083F1B3 /* RatesModel.swift in Sources */,
@@ -609,7 +625,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ValutaTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -630,7 +645,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ValutaTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -660,6 +674,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Chistyakov.ValutaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Valuta;
@@ -679,6 +694,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Chistyakov.ValutaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Valuta;

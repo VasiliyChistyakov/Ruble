@@ -17,12 +17,25 @@ class ViewController: UIViewController {
     
     private var viewModel: ViewModelProtocol! {
         didSet {
-            viewModel.appendData()
+            self.viewModel.appendData()
             DispatchQueue.main.async {
                 self.pickerView.reloadAllComponents()
-                self.activityIndicator.isHidden = true
-                self.activityIndicator.stopAnimating()
-                self.pickerView.isHidden = false
+            }
+            /// Придумать как это сдкелать из mvvm
+            NetworkingManager.shared.fetchRates(urlJson: urlJson) { data in
+                if data.Valute.isEmpty {
+                    print("Нет значений")
+                } else {
+                    DispatchQueue.main.async {
+                        self.activityIndicator.isHidden = true
+                        self.activityIndicator.stopAnimating()
+                        
+                        self.pickerView.isHidden = false
+                        self.topTextLabel.isHidden = false
+                        self.inputTextField.isHidden = false
+                        self.outputTextField.isHidden = false
+                    }
+                }
             }
         }
     }
@@ -37,14 +50,19 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         pickerView.isHidden = true
-        activityIndicator.startAnimating()
+        topTextLabel.isHidden = true
+        inputTextField.isHidden = true
+        outputTextField.isHidden = true
         
         activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        
         pickerView.dataSource = self
         pickerView.delegate = self
         
         viewModel = ViewModel()
         
+        /// Рефакторинг
         inputObserver = NotificationCenter.default
             .publisher(for: UITextField.textDidChangeNotification, object: inputTextField)
             .map {$0.object as? UITextField}
@@ -61,7 +79,7 @@ class ViewController: UIViewController {
                                               outputTextField: self.outputTextField,
                                               pickedValute: self.pickedValute)
             })
-        
+        /// Рефакторинг
         outputObserver = NotificationCenter.default
             .publisher(for: UITextField.textDidChangeNotification, object: outputTextField)
             .map {$0.object as? UITextField}

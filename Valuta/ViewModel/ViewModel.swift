@@ -17,6 +17,8 @@ class ViewModel: ViewModelProtocol {
             self.ratesModel = models
             let keys = models.Valute.keys.sorted()
             self.listsOfcurrencies = keys
+            print(keys)
+            print(keys.count)
         }
     }
     

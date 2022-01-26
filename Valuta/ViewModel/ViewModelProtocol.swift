@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ViewModelProtocol: class {
+protocol ViewModelProtocol {
     
     var listsOfcurrencies: [String] { get } 
     var ratesModel: RatesModel? { get }
