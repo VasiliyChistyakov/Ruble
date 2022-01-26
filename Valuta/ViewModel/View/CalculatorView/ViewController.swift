@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import Firebase
 
 class ViewController: UIViewController {
     
@@ -45,6 +46,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var outputTextField: UITextField!
     @IBOutlet weak var topTextLabel: UILabel!
+    @IBOutlet weak var nameButtonItem: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +100,31 @@ class ViewController: UIViewController {
             })
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchFirebaseUserName()
+    }
+    
+    @IBAction func logoutAction(_ sender: Any) {
+        guard let email = Auth.auth().currentUser?.email else { return }
+        let alert = UIAlertController(title: "Профиль", message: "\(email)", preferredStyle: .actionSheet)
+        let exitAction = UIAlertAction(title: "Выход", style: .default) { _ in
+            do {
+                try Auth.auth().signOut()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
+        
+        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in }
+        
+        alert.addAction(okAction)
+        alert.addAction(exitAction)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
     @IBAction func tapAction(_ sender: Any) {
         inputTextField.resignFirstResponder()
         outputTextField.resignFirstResponder()
@@ -122,6 +149,21 @@ class ViewController: UIViewController {
         let сalculatingNominal = valueRates * Double(valuteNominal)
         
         inputTextField.text = "\(String(format:"%.2f",сalculatingNominal))"
+    }
+    
+    func fetchFirebaseUserName() {
+        let ref = Database.database().reference()
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        ref.child("users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let username = value?["name"] as? String ?? ""
+            print(username)
+            self.nameButtonItem.title = username
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
 }
 
