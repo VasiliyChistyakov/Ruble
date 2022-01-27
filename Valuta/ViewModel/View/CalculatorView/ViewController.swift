@@ -63,8 +63,7 @@ class ViewController: UIViewController {
         pickerView.delegate = self
         
         viewModel = ViewModel()
-        
-        /// Рефакторинг
+    
         inputObserver = NotificationCenter.default
             .publisher(for: UITextField.textDidChangeNotification, object: inputTextField)
             .map {$0.object as? UITextField}
@@ -81,7 +80,7 @@ class ViewController: UIViewController {
                                               outputTextField: self.outputTextField,
                                               pickedValute: self.pickedValute)
             })
-        /// Рефакторинг
+     
         outputObserver = NotificationCenter.default
             .publisher(for: UITextField.textDidChangeNotification, object: outputTextField)
             .map {$0.object as? UITextField}
