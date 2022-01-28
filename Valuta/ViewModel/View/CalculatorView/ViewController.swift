@@ -15,6 +15,9 @@ class ViewController: UIViewController {
     
     var inputObserver: AnyCancellable?
     var outputObserver: AnyCancellable?
+    var calculatingViewController: CalculatingViewController?
+    
+    var authCalculatingViewController: AuthCalculatingViewController?
     
     private var viewModel: ViewModelProtocol! {
         didSet {
@@ -22,15 +25,14 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.pickerView.reloadAllComponents()
             }
-         
-            NetworkingManager.shared.fetchRates(urlJson: urlJson) { data in
-                if data.Valute.isEmpty {
-                    print("Нет значений")
-                } else {
+            
+            NetworkingManager.shared.fetchRates(urlJson: urlJson) { model in
+                let data = model.Valute
+                if !data.isEmpty {
                     DispatchQueue.main.async {
                         self.activityIndicator.isHidden = true
                         self.activityIndicator.stopAnimating()
-                        
+
                         self.pickerView.isHidden = false
                         self.topTextLabel.isHidden = false
                         self.inputTextField.isHidden = false
@@ -63,6 +65,9 @@ class ViewController: UIViewController {
         pickerView.delegate = self
         
         viewModel = ViewModel()
+        
+        calculatingViewController = CalculatingViewController()
+        authCalculatingViewController = AuthCalculatingViewController()
     
         inputObserver = NotificationCenter.default
             .publisher(for: UITextField.textDidChangeNotification, object: inputTextField)
@@ -76,9 +81,9 @@ class ViewController: UIViewController {
                 }
             }
             .sink(receiveValue: { value in
-                self.inputCalculatingСurrency(inputTextField: self.inputTextField,
+                self.calculatingViewController?.inputCalculatingСurrency(inputTextField: self.inputTextField,
                                               outputTextField: self.outputTextField,
-                                              pickedValute: self.pickedValute)
+                                                                         pickedValute: self.pickedValute, viewModel: self.viewModel)
             })
      
         outputObserver = NotificationCenter.default
@@ -93,15 +98,17 @@ class ViewController: UIViewController {
                 }
             }
             .sink(receiveValue: { value in
-                self.outputCalculatingСurrency(inputTextField: self.inputTextField,
+                self.calculatingViewController?.outputCalculatingСurrency(inputTextField: self.inputTextField,
                                                outputTextField: self.outputTextField,
-                                               pickedValute: self.pickedValute)
+                                                                          pickedValute: self.pickedValute, viewModel: self.viewModel)
             })
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchFirebaseUserName()
+        self.authCalculatingViewController?.fetchFirebaseUserName(complitionHandler: { username in
+            self.nameButtonItem.title = "Привет, \(username)!"
+        })
     }
     
     @IBAction func logoutAction(_ sender: Any) {
@@ -121,48 +128,12 @@ class ViewController: UIViewController {
         alert.addAction(exitAction)
         
         present(alert, animated: true, completion: nil)
-        
     }
     
     @IBAction func tapAction(_ sender: Any) {
         inputTextField.resignFirstResponder()
         outputTextField.resignFirstResponder()
         print(viewModel.listsOfcurrencies)
-    }
-    
-    func inputCalculatingСurrency(inputTextField: UITextField!, outputTextField: UITextField, pickedValute: String!) {
-        guard let inputValute: Int = (Int(inputTextField.text!)), let pickedValute = pickedValute else { return }
-        let valueRates: Double = (Double(inputValute) * Double((viewModel.ratesModel?.Valute[pickedValute]!.Value ?? 0)))
-        
-        guard let valuteNominal =  viewModel.ratesModel?.Valute[pickedValute]?.Nominal! else { return }
-        let сalculatingNominal = valueRates / Double(valuteNominal)
-        
-        outputTextField.text = "\(String(format:"%.2f",сalculatingNominal))"
-    }
-    
-    func outputCalculatingСurrency(inputTextField: UITextField!, outputTextField: UITextField, pickedValute: String!) {
-        guard let outputValute: Int = (Int(outputTextField.text!)), let pickedValute = pickedValute else { return }
-        let valueRates: Double = (Double(outputValute)) / (Double((viewModel.ratesModel?.Valute[pickedValute]!.Value ?? 0)))
-        
-        guard let valuteNominal =  viewModel.ratesModel?.Valute[pickedValute]?.Nominal! else { return }
-        let сalculatingNominal = valueRates * Double(valuteNominal)
-        
-        inputTextField.text = "\(String(format:"%.2f",сalculatingNominal))"
-    }
-    
-    func fetchFirebaseUserName() {
-        let ref = Database.database().reference()
-        guard let userID = Auth.auth().currentUser?.uid else { return }
-        ref.child("users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            let username = value?["name"] as? String ?? ""
-            print(username)
-            self.nameButtonItem.title = username
-            // ...
-        }) { (error) in
-            print(error.localizedDescription)
-        }
     }
 }
 
@@ -184,13 +155,13 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         self.topTextLabel.text = self.viewModel.ratesModel?.Valute[self.pickedValute]?.Name
         self.inputTextField.placeholder = self.viewModel.listsOfcurrencies[row]
         
-        self.inputCalculatingСurrency(inputTextField: self.inputTextField,
+        self.calculatingViewController?.inputCalculatingСurrency(inputTextField: self.inputTextField,
                                       outputTextField: self.outputTextField,
-                                      pickedValute: self.pickedValute)
+                                                                 pickedValute: self.pickedValute, viewModel: viewModel )
         
-        self.outputCalculatingСurrency(inputTextField: self.inputTextField,
+        self.calculatingViewController?.outputCalculatingСurrency(inputTextField: self.inputTextField,
                                        outputTextField: self.outputTextField,
-                                       pickedValute: self.pickedValute)
+                                                                  pickedValute: self.pickedValute, viewModel: viewModel)
     }
 }
 

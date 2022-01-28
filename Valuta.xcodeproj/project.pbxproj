@@ -36,6 +36,8 @@
 		FD6565A727828B70000C1346 /* CurrentSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6565A627828B70000C1346 /* CurrentSecondViewController.swift */; };
 		FDB43B4B278A3F92004B5CD7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB43B4A278A3F92004B5CD7 /* SettingsViewController.swift */; };
 		FDD4611527865D2600A8760B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD4611427865D2500A8760B /* Constants.swift */; };
+		FDEE0ECA27A2FA86001480B5 /* CalculatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEE0EC927A2FA86001480B5 /* CalculatingViewController.swift */; };
+		FDEE0ECC27A30E12001480B5 /* AuthCalculatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEE0ECB27A30E11001480B5 /* AuthCalculatingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		FD6565A627828B70000C1346 /* CurrentSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSecondViewController.swift; sourceTree = "<group>"; };
 		FDB43B4A278A3F92004B5CD7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FDD4611427865D2500A8760B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FDEE0EC927A2FA86001480B5 /* CalculatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatingViewController.swift; sourceTree = "<group>"; };
+		FDEE0ECB27A30E11001480B5 /* AuthCalculatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCalculatingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				FD050F9F27A1A6A3008EC877 /* AuthView */,
-				FD6565A527828B49000C1346 /* CurrentSecondView */,
 				FD1F23742780F59700B76D05 /* CurrentCourseView */,
 				FD1F23732780F33A00B76D05 /* CalculatorView */,
 			);
@@ -220,6 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				335C980E26C939100083F1B3 /* ViewController.swift */,
+				FDEE0EC927A2FA86001480B5 /* CalculatingViewController.swift */,
+				FDEE0ECB27A30E11001480B5 /* AuthCalculatingViewController.swift */,
 			);
 			path = CalculatorView;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 		FD1F23742780F59700B76D05 /* CurrentCourseView */ = {
 			isa = PBXGroup;
 			children = (
+				FD6565A527828B49000C1346 /* CurrentSecondView */,
 				FD1F237B278125D300B76D05 /* CurrentCourseViewController.swift */,
 				FD1F23772780F61F00B76D05 /* CurrentCourseCollectionViewCell.swift */,
 				FDB43B4A278A3F92004B5CD7 /* SettingsViewController.swift */,
@@ -453,10 +459,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				335C980F26C939100083F1B3 /* ViewController.swift in Sources */,
+				FDEE0ECA27A2FA86001480B5 /* CalculatingViewController.swift in Sources */,
 				FDD4611527865D2600A8760B /* Constants.swift in Sources */,
 				335C980B26C939100083F1B3 /* AppDelegate.swift in Sources */,
 				335C980D26C939100083F1B3 /* SceneDelegate.swift in Sources */,
 				33A7AADF26F66C93007CB2E4 /* NetworkingManager.swift in Sources */,
+				FDEE0ECC27A30E12001480B5 /* AuthCalculatingViewController.swift in Sources */,
 				FD1F23722780E66700B76D05 /* ViewModelProtocol.swift in Sources */,
 				FD1F23782780F61F00B76D05 /* CurrentCourseCollectionViewCell.swift in Sources */,
 				FD6565A727828B70000C1346 /* CurrentSecondViewController.swift in Sources */,
